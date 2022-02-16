@@ -1,1 +1,1 @@
-# Portfolio redesign made with (NextJS + Chakra UI) 💖
+Portfolio redesign made with (NextJS + Chakra UI) 💖
