@@ -1,26 +1,24 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Heading, VStack, Button, Container } from '@chakra-ui/react'
+import { Heading, Button } from '@chakra-ui/react'
+import Layout from '../components/Layout'
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Head>
-        <title>devzana</title>
-        <meta name="description" content="Made by Sean Christian Lozana with NextJS + Chakra UI 💖" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <VStack h="100vh" w="100vw">
-        <Container m="auto">
-          <Heading mb={4}>
-            Welcome to my new redesigned portfolio 💪🔥
-          </Heading>
-          <Button onClick={() => alert('🎊🎊🎊')}>
-            Click for a surprise!
-          </Button>
-        </Container>
-      </VStack>
-    </div>
+    <Layout
+      title="Home"
+    >
+    <Heading mx="auto">
+      Welcome to my redesigned portfolio! 🔥💪
+    </Heading>
+    <Button 
+      mt={6}
+      variant="outline" 
+      colorScheme="facebook"
+      onClick={() => alert("Yay! 🎊🎊🎊")}
+    >
+      Click for a surprise! 🔥
+    </Button>
+    </Layout>
   )
 }
 
