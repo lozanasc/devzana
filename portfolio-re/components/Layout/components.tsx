@@ -2,6 +2,8 @@ import { MouseEventHandler } from 'react';
 import { HStack, Stack, Text, IconButton } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Facebook, Github, Instagram, Linkedin } from '@icons-pack/react-simple-icons';
 
 /**
  * * LinkText component
@@ -42,7 +44,7 @@ type NavigationProps = {
 }
 
 export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
-
+  const router = useRouter();
   return (
     <HStack 
       w="75%" 
@@ -52,12 +54,15 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
       bgColor = { colorMode === 'light' ? "gray.500" : "gray.200" }
       rounded="lg"
     >
-    <Stack>
+    <Stack
+      cursor="pointer"
+    >
       <Image 
         src={ colorMode === 'light' ? "/light/logo/logo.svg" : "/dark/logo/logo.svg"} 
         width={88}
         height={16}
         alt="<devzana.>"
+        onClick={() => {router.push('/')}}
       />
     </Stack>
     <HStack spacing={6}>
@@ -97,8 +102,8 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
           }
         colorScheme="gray.200"
         onClick={toggleColorMode}
-      />
-    </HStack>
+        />
+      </HStack>
     </HStack>
   )
 }
@@ -131,6 +136,46 @@ export const Footer = ({ colorMode }:FooterProps) => {
         >
           © 2022 Sean Christian Lozana. All rights reserved.
         </Text>
+      </Stack>
+      <Stack
+        direction="row"
+      >
+       <IconButton
+        aria-label='Facebook'
+        icon={
+          <Facebook 
+            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+          />
+        }
+        colorScheme="gray.200"
+        />
+        <IconButton
+        aria-label='Instagram'
+        icon={
+          <Instagram 
+            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+          />
+        }
+        colorScheme="gray.200"
+        />
+        <IconButton
+        aria-label='GitHub'
+        icon={
+          <Github 
+            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+          />
+        }
+        colorScheme="gray.200"
+        />
+        <IconButton
+        aria-label='Linkedin'
+        icon={
+          <Linkedin 
+            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+          />
+        }
+        colorScheme="gray.200"
+        />
       </Stack>
     </HStack>
   )
