@@ -1,3 +1,4 @@
+/*disable-no-inline-styles*/
 import { Stack, Heading, Text, Button } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 

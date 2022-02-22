@@ -1,8 +1,8 @@
 import { ReactNode, MouseEventHandler } from 'react';
 import Head from 'next/head'
-import { Stack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { Navigation, Footer } from './components';
+import { MobileNavigation, TopBar, Navigation, Footer } from './components';
 
 type Props = {
   children?: ReactNode,
@@ -25,6 +25,7 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
           <meta name="description" content="Made by Sean Christian Lozana with NextJS + Chakra UI 💖" />
           <link rel="icon" href={ colorMode === 'light' ? '/light/logo/Light-Page.ico' : '/dark/logo/Dark-Page.ico'} />
         </Head>
+        <TopBar colorMode={colorMode}/>
         <Navigation 
           colorMode={colorMode}
           toggleColorMode={toggleColorMode}
@@ -42,6 +43,10 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
         >
           {children}
         </motion.div>
+        <MobileNavigation 
+          colorMode={colorMode}
+          toggleColorMode={toggleColorMode}
+        />
         <Footer colorMode={colorMode} />
       </VStack>
   )
