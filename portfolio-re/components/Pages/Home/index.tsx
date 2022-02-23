@@ -1,6 +1,6 @@
 /*disable-no-inline-styles*/
 import { useEffect, useState } from "react"
-import { Stack, Heading, Text, Button } from "@chakra-ui/react"
+import { Stack, Heading, Text, Button, useBreakpointValue } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 
 type HomeProps = {
@@ -20,8 +20,10 @@ const Home = ({ colorMode }:HomeProps) => {
       setIsMobile(true)
   }, [isMobile])
 
+  const buttonSize = useBreakpointValue(['sm', 'md', 'lg']);
+
   return (
-      <Stack spacing={[2 ,4, 4.5]} my="auto" overflowY="auto">
+      <Stack spacing={[2 , 3.5, 4]} my="auto" overflowY="auto">
         <Heading 
           as="h3" 
           color={colorMode === 'light' ?  'gray.500' : 'white'}
@@ -56,17 +58,18 @@ const Home = ({ colorMode }:HomeProps) => {
         <Button 
           variant="outline" 
           colorScheme={colorMode === 'light' ? 'gray.700' : 'base'} 
-          size="lg" 
-          maxW="fit-content" 
+          maxW="fit-content"
+          size={buttonSize}
           _hover={
             {
-              dropShadow: (colorMode === 'light' ? 'lg' : 'base')
+              scale: 2
             }
           }
         >
           <Text
             color={colorMode === 'light' ?  'gray.700' : 'white'}
             onClick={() => {router.push('/contact')}}
+            fontSize={['xs', 'lg', 'xl']}
           >
             Say Hello 👋
           </Text>

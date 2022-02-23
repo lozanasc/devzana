@@ -46,7 +46,7 @@ const LinkText = ({text, href, colorMode}:LinkTextProps) => {
       _hover={{fontWeight: 'bold'}}
       my="auto"
       color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
-      fontSize={['xs', 'base', 'base']}
+      fontSize={['xs', 'base', 'lg']}
     >
       <Link href={href}>
         {text}
@@ -56,7 +56,7 @@ const LinkText = ({text, href, colorMode}:LinkTextProps) => {
 }
 
 /**
- * * Navigation
+ * * Navigation with Mobile
  * Navigation component for the Layout
  * Serves as navigator for users
  * ? This will remain even when changing paths/url
@@ -68,7 +68,7 @@ type TopBarProps = {
 }
 
  export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
-   const altColorMode = (colorMode: string) => colorMode === 'light' ? 'light' : 'dark';
+   const altColorMode = (colorMode: string) => colorMode !== 'light' ? 'light' : 'dark';
   return (
     <HStack 
       w="75%"
@@ -113,12 +113,12 @@ export const MobileNavigation = ({ colorMode }: NavigationProps) => {
       w="75%" 
       mx="auto"
       justify="space-between"
-      px={[4, 6, 12]} py={[4 , 5, 5]}
+      px={[4, 6, 12]} py={[3 , 5, 5]}
       rounded="xl"
       bgColor = {colorMode === 'light' ? 'gray.500' : 'gray.200'}
       display = {['flex', 'flex', 'none']}
     >
-      <HStack spacing={6} mx="auto">
+      <HStack spacing={[4, 5, 6]} mx="auto">
         <LinkText 
           text="about" 
           href="/about"
