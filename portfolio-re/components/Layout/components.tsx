@@ -6,6 +6,31 @@ import { useRouter } from 'next/router';
 import { Facebook, Github, Instagram, Linkedin } from '@icons-pack/react-simple-icons';
 
 
+// Routes for the Navigation
+// ? cleaner code in the Nav component and I'll be able to implement activeStyle
+const Route: { name: string, href: string }[] =[
+  {
+    name: 'about',
+    href: '/about'
+  },
+  {
+    name: 'tech',
+    href: '/tech'
+  },
+  {
+    name: 'projects',
+    href: '/projects'
+  },
+  {
+    name: 'blog',
+    href: '/blog'
+  },
+  {
+    name: 'contact',
+    href: '/contact'
+  }
+]
+
 type LogoProps = {
   colorMode: string,
 }
@@ -41,11 +66,14 @@ type LinkTextProps = {
 }
 
 const LinkText = ({text, href, colorMode}:LinkTextProps) => {
+  const router = useRouter();
   return (
     <Text 
       _hover={{fontWeight: 'bold'}}
       my="auto"
       color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
+      fontSize={['sm', 'sm', 'md', 'lg']}
+      fontWeight={router.asPath === href ? 'black' : 'normal'}
     >
       <Link href={href}>
         {text}
@@ -55,7 +83,7 @@ const LinkText = ({text, href, colorMode}:LinkTextProps) => {
 }
 
 /**
- * * Navigation
+ * * Navigation with Mobile
  * Navigation component for the Layout
  * Serves as navigator for users
  * ? This will remain even when changing paths/url
@@ -63,24 +91,37 @@ const LinkText = ({text, href, colorMode}:LinkTextProps) => {
 
 type TopBarProps = {
   colorMode: string,
+  toggleColorMode: MouseEventHandler<HTMLButtonElement>,
 }
 
- export const TopBar = ({ colorMode }: TopBarProps) => {
+ export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
+  const altColorMode = (colorMode: string) => colorMode !== 'light' ? 'light' : 'dark';
   return (
     <HStack 
-      w="75%" 
+      w="75%"
       mx="auto"
       justify="space-between"
-      px={{ sm: 0, md: 12}} py={3}
+      px={{ sm: 0, md: 12}} py={1}
       rounded="lg"
-      display = {{ sm: 'flex', md: 'none' }}
+      display = {['flex', 'flex', 'none']}
     >
       <IconButton 
         aria-label="devzana Logo"
-        icon = {<Logo colorMode={'light'}/>}
+        icon = {<Logo colorMode={altColorMode(colorMode)}/>}
         colorScheme="gray.200"
       />
-      
+      <IconButton
+          aria-label="Toggle Light mode"
+          icon={
+              <Image 
+                src={ altColorMode(colorMode) === 'light' ? '/light/icons/darkToggle.svg' : '/dark/icons/lightToggle.svg'} 
+                height={32} width={32} 
+                alt="clouds with the sun peaking"
+              />
+            }
+          colorScheme="gray.200"
+          onClick={toggleColorMode}
+        />
     </HStack>
   )
 }
@@ -99,37 +140,23 @@ export const MobileNavigation = ({ colorMode }: NavigationProps) => {
       w="75%" 
       mx="auto"
       justify="space-between"
-      px={12} py={5}
+      px={[4, 6, 12]} py={[3 , 5, 5]}
       rounded="xl"
       bgColor = {colorMode === 'light' ? 'gray.500' : 'gray.200'}
-      display = {{ sm: 'flex', md: 'none' }}
+      display = {['flex', 'flex', 'none']}
+      boxShadow="dark-lg"
     >
-      <HStack spacing={6} mx="auto">
-        <LinkText 
-          text="about" 
-          href="/about"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="tech" 
-          href="/tech"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="projects" 
-          href="/projects"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="blog" 
-          href="/blog"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="contact" 
-          href="/contact"
-          colorMode={colorMode}
-        />
+      <HStack spacing={[3, 8, 12]} mx="auto">
+        {
+          Route.map(({ name, href }, key) => 
+            <LinkText
+              key={key}
+              text={name}
+              href={href}
+              colorMode={colorMode}
+            />
+          )
+        }
       </HStack>
     </HStack>
   )
@@ -144,41 +171,25 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
       px={12} py={3}
       rounded="lg"
       bgColor = {{ sm: colorMode === 'light' ? 'gray.200' : 'gray.700', md: colorMode === 'light' ? 'gray.500' : 'gray.200'}}
-      display = {{ sm: 'none', md: 'flex'}}
+      display = {['none', 'none', 'flex']}
+      boxShadow="md"
     >
-      <Stack cursor="pointer">
-        <IconButton 
-          aria-label="devzana Logo"
-          icon = {<Logo colorMode={colorMode}/>}
-          colorScheme="gray.200"
-        />
-      </Stack>
+      <IconButton 
+        aria-label="devzana Logo"
+        icon = {<Logo colorMode={colorMode}/>}
+        colorScheme="gray.200"
+      /> 
       <HStack spacing={6}>
-        <LinkText 
-          text="about" 
-          href="/about"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="tech" 
-          href="/tech"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="projects" 
-          href="/projects"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="blog" 
-          href="/blog"
-          colorMode={colorMode}
-        />
-        <LinkText 
-          text="contact" 
-          href="/contact"
-          colorMode={colorMode}
-        />
+       {
+         Route.map(({ name, href }, key) => 
+         <LinkText
+           key={key}
+           text={name}
+           href={href}
+           colorMode={colorMode}
+         />
+       )
+       }
         <IconButton
           aria-label="Toggle Light mode"
           icon={
@@ -190,7 +201,7 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
             }
           colorScheme="gray.200"
           onClick={toggleColorMode}
-          />
+        />
       </HStack>
     </HStack>
   )
@@ -223,10 +234,12 @@ export const Footer = ({ colorMode }:FooterProps) => {
       px={12} py={3}
       bgColor = { colorMode === 'light' ? "gray.500" : "gray.200" }
       rounded="lg"
-      display = {{ sm: 'none', md: 'flex'}}
+      display = {['none', 'none', 'flex']}
+      boxShadow="md"
     >
       <Stack>
         <Text
+          fontSize="small"
           fontWeight="bold"
           color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
         >
