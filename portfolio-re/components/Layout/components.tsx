@@ -68,7 +68,7 @@ type TopBarProps = {
 }
 
  export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
-   const altColorMode = (colorMode: string) => colorMode !== 'light' ? 'light' : 'dark';
+  const altColorMode = (colorMode: string) => colorMode !== 'light' ? 'light' : 'dark';
   return (
     <HStack 
       w="75%"

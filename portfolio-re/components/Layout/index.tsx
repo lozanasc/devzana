@@ -26,7 +26,7 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
           <link rel="icon" href={ colorMode === 'light' ? '/light/logo/Light-Page.ico' : '/dark/logo/Dark-Page.ico'} />
         </Head>
         <TopBar 
-          colorMode={'light'}
+          colorMode={colorMode}
           toggleColorMode={toggleColorMode}
         />
         <Navigation 
