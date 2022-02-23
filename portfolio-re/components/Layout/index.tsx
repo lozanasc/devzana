@@ -25,7 +25,10 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
           <meta name="description" content="Made by Sean Christian Lozana with NextJS + Chakra UI 💖" />
           <link rel="icon" href={ colorMode === 'light' ? '/light/logo/Light-Page.ico' : '/dark/logo/Dark-Page.ico'} />
         </Head>
-        <TopBar colorMode={colorMode}/>
+        <TopBar 
+          colorMode={'light'}
+          toggleColorMode={toggleColorMode}
+        />
         <Navigation 
           colorMode={colorMode}
           toggleColorMode={toggleColorMode}

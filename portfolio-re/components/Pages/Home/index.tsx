@@ -1,4 +1,5 @@
 /*disable-no-inline-styles*/
+import { useEffect, useState } from "react"
 import { Stack, Heading, Text, Button } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 
@@ -8,29 +9,44 @@ type HomeProps = {
 
 const Home = ({ colorMode }:HomeProps) => {
   const router = useRouter()
+
+  const [ isMobile, setIsMobile ] = useState(false);
+
+  useEffect(() => {
+  // Checks for current Viewport's size
+    if(window.innerWidth > 767)
+      setIsMobile(false)
+    else if(window.innerWidth < 767)
+      setIsMobile(true)
+  }, [isMobile])
+
   return (
-      <Stack spacing={4} my="auto" overflowY="auto">
-        <Heading as="h3" color={colorMode === 'light' ?  'gray.500' : 'white'}>
+      <Stack spacing={[2 ,4, 4.5]} my="auto" overflowY="auto">
+        <Heading 
+          as="h3" 
+          color={colorMode === 'light' ?  'gray.500' : 'white'}
+          fontSize={['lg', 'xl', '4xl']}
+        >
           Hello <span style={{fontWeight: "normal"}}>there</span><span style={{color: "#F093AF"}}>!</span>
         </Heading>
         <Heading 
           as="h1" 
-          size="4xl" 
+          fontSize={['4xl', '3xl', '7xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
-          <span style={{fontWeight: 'normal'}}>I&apos;m</span> Sean Christian Lozana<span style={{color: "#F093AF"}}>.</span>
+          <span style={{fontWeight: 'normal'}}>I&apos;m</span> {`Sean${!isMobile ? ' Christian Lozana' : ''}`}<span style={{color: "#F093AF"}}>.</span>
         </Heading> 
         <Heading 
           as="h2" 
-          size="xl" 
+          fontSize={['xl', '2xl', '4xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
           Aspiring <span style={{color: "#F093AF", fontWeight: "normal"}}>Software Engineer</span>
         </Heading>
         <Text 
           as="h4" 
-          fontSize="2xl" fontWeight="light"
-          w="80%"  
+          fontSize={['xs', 'lg', '2xl']} fontWeight="light"
+          w="85%"  
           color={colorMode === 'light' ?  'gray.700' : 'white'}
         >
           I&apos;m a senior <span style={{color: "#F093AF", fontWeight: "bold"}}>Computer Science</span> student,
