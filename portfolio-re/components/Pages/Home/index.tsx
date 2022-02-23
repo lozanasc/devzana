@@ -10,6 +10,7 @@ type HomeProps = {
 const Home = ({ colorMode }:HomeProps) => {
   const router = useRouter()
 
+  // Store's the current state of the Viewport
   const [ isMobile, setIsMobile ] = useState(false);
 
   useEffect(() => {
@@ -18,42 +19,43 @@ const Home = ({ colorMode }:HomeProps) => {
       setIsMobile(false)
     else if(window.innerWidth < 767)
       setIsMobile(true)
-  }, [isMobile])
-
-  const buttonSize = useBreakpointValue(['sm', 'md', 'lg']);
+  }, [])
+  
+  const buttonSize = useBreakpointValue(['sm', 'lg', 'lg']);
 
   return (
-      <Stack spacing={[2 , 3.5, 4]} my="auto" overflowY="auto">
+      <Stack spacing={[1 , 1, 4]} my="auto" overflowY="auto">
         <Heading 
           as="h3" 
           color={colorMode === 'light' ?  'gray.500' : 'white'}
-          fontSize={['lg', 'xl', '4xl']}
+          fontSize={['2xl', '3xl', '4xl']}
         >
           Hello <span style={{fontWeight: "normal"}}>there</span><span style={{color: "#F093AF"}}>!</span>
         </Heading>
         <Heading 
           as="h1" 
-          fontSize={['4xl', '3xl', '7xl']}
+          fontSize={['5xl', '6xl', '7xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
           <span style={{fontWeight: 'normal'}}>I&apos;m</span> {`Sean${!isMobile ? ' Christian Lozana' : ''}`}<span style={{color: "#F093AF"}}>.</span>
         </Heading> 
         <Heading 
           as="h2" 
-          fontSize={['xl', '2xl', '4xl']}
+          fontSize={['xl', '3xl', '4xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
           Aspiring <span style={{color: "#F093AF", fontWeight: "normal"}}>Software Engineer</span>
         </Heading>
         <Text 
           as="h4" 
-          fontSize={['xs', 'lg', '2xl']} fontWeight="light"
-          w="85%"  
+          fontSize={['sm', 'xl', '2xl']} fontWeight="light"
+          w={['90%', '85%', '75%']}
           color={colorMode === 'light' ?  'gray.700' : 'white'}
         >
           I&apos;m a senior <span style={{color: "#F093AF", fontWeight: "bold"}}>Computer Science</span> student,
           currently exploring the field of Web & Mobile design to development 
-          and is looking for internship opportunities to <span style={{fontWeight: "bold"}}>learn and grow</span>.
+          and is looking for internship opportunities to <span style={{fontWeight: "bold"}}>learn and grow</span>
+          <span style={{color: "#F093AF"}}>.</span>
         </Text>
         <Button 
           variant="outline" 
@@ -69,7 +71,7 @@ const Home = ({ colorMode }:HomeProps) => {
           <Text
             color={colorMode === 'light' ?  'gray.700' : 'white'}
             onClick={() => {router.push('/contact')}}
-            fontSize={['xs', 'lg', 'xl']}
+            fontSize={['xs', 'xl', '2xl']}
           >
             Say Hello 👋
           </Text>

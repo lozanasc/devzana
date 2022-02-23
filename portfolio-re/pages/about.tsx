@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
-import { Heading, useColorMode } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
 import Layout from '../components/Layout'
+import About from '../components/Pages/About';
 
 const Home: NextPage = () => {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -10,9 +11,9 @@ const Home: NextPage = () => {
       colorMode={colorMode} 
       toggleColorMode={toggleColorMode}
     >
-      <Heading>
-        About Page 💪
-      </Heading>
+      <About 
+        colorMode={colorMode}
+      />
     </Layout>
   )
 }

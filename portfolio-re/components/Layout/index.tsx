@@ -22,7 +22,7 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
       >
         <Head>
           <title>{`devzana | ${title}`}</title>
-          <meta name="description" content="Made by Sean Christian Lozana with NextJS + Chakra UI 💖" />
+          <meta name="description" content="Made by Sean Christian Lozana with (NextJS + Chakra UI) 💖" />
           <link rel="icon" href={ colorMode === 'light' ? '/light/logo/Light-Page.ico' : '/dark/logo/Dark-Page.ico'} />
         </Head>
         <TopBar 
@@ -35,8 +35,8 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
         />
         <motion.div
             // ? Transition animation each page
-            initial = {{opacity: 0}}
-            animate = {{opacity: 1}}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
             transition = {{duration: 1}}
             style={{
               minHeight: "75%", maxHeight: "75%",
