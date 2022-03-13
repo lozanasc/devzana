@@ -17,7 +17,8 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
       <VStack 
         w="100vw" h="100vh" 
         bgColor={colorMode === 'light' ? 'gray.200' : 'gray.700'}
-        justify="space-evenly"
+        justify="space-between"
+        paddingY={4}
         overflow="hidden"
       >
         <Head>
