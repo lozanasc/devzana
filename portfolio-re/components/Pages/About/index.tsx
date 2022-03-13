@@ -32,7 +32,7 @@ const About = ({colorMode}:AboutProps) => {
         w={['100%', '100%', '50%']}
         spacing={4}>
         <Heading
-          fontSize={['lg', 'xl', 'lg', '3xl']}
+          fontSize={['lg', 'xl', 'xl', '3xl']}
           color={colorMode === 'light' ?  'gray.700' : 'white'}
           alignSelf={["center", null, "flex-start"]}
         >
@@ -47,7 +47,7 @@ const About = ({colorMode}:AboutProps) => {
         />
         <Text 
           as="h4" 
-          fontSize={['lg', 'xl', 'lg', '2xl']}
+          fontSize={['md', 'xl', 'xl', '2xl']}
           fontWeight="light"
           w={['90%', '85%', '80%']}
           color={colorMode === 'light' ?  'gray.700' : 'white'}
