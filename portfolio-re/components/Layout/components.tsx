@@ -94,7 +94,7 @@ type TopBarProps = {
   toggleColorMode: MouseEventHandler<HTMLButtonElement>,
 }
 
- export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
+export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
   const altColorMode = (colorMode: string) => colorMode !== 'light' ? 'light' : 'dark';
   return (
     <HStack 
@@ -180,16 +180,16 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
         colorScheme="gray.200"
       /> 
       <HStack spacing={6}>
-       {
-         Route.map(({ name, href }, key) => 
-         <LinkText
-           key={key}
-           text={name}
-           href={href}
-           colorMode={colorMode}
-         />
-       )
-       }
+      {
+        Route.map(({ name, href }, key) => 
+        <LinkText
+          key={key}
+          text={name}
+          href={href}
+          colorMode={colorMode}
+        />
+      )
+      }
         <IconButton
           aria-label="Toggle Light mode"
           icon={
@@ -239,17 +239,17 @@ export const Footer = ({ colorMode }:FooterProps) => {
     >
       <Stack>
         <Text
-          fontSize="small"
+          fontSize="lg"
           fontWeight="bold"
           color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
         >
-          © 2022 Sean Christian Lozana. All rights reserved.
+          © 2022 Sean Christian Lozana
         </Text>
       </Stack>
       <Stack
         direction="row"
       >
-       <IconButton
+      <IconButton
         aria-label="Facebook"
         icon={
           <Facebook 
