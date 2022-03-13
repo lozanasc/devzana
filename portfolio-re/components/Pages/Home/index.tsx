@@ -28,9 +28,9 @@ const Home = ({ colorMode }:HomeProps) => {
         <Heading 
           as="h3" 
           color={colorMode === 'light' ?  'gray.500' : 'white'}
-          fontSize={['xl', '3xl', '3xl']}
+          fontSize={['2xl', '4xl', '4xl']}
         >
-          Hello <span style={{fontWeight: "normal"}}>there</span><span style={{color: "#F093AF"}}>!</span>
+          Hello <span style={{fontWeight: "normal"}}>there</span><span style={{marginLeft: 3,color: "#F093AF", transform: "rotate(15deg)", position: "absolute"}}>!</span>
         </Heading>
         <Heading 
           as="h1" 
