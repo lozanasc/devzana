@@ -1,14 +1,12 @@
+import { useEffect, useState } from "react";
 import { Stack, Heading, Text, Divider } from "@chakra-ui/react";
 import { Chakraui, Nextdotjs } from '@icons-pack/react-simple-icons';
-import { useEffect, useState } from "react";
 import { ProfileDesktop, ProfileMobile } from './components';
 
 type AboutProps = {
   colorMode: string
 }
 
-// TODO: Fix dark-mode font size and tech icon size
-// * 
 const About = ({colorMode}:AboutProps) => {
 
   const [ iconSize, setIconSize ] = useState(0)
