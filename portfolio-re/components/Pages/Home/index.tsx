@@ -1,5 +1,3 @@
-/*disable-no-inline-styles*/
-import { useEffect, useState } from "react"
 import { Stack, Heading, Text, Button, Divider, useBreakpointValue } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 
@@ -8,37 +6,34 @@ type HomeProps = {
 }
 
 const Home = ({ colorMode }:HomeProps) => {
+
   const router = useRouter()
 
-  // Store's the current state of the Viewport
-  const [ isMobile, setIsMobile ] = useState(false);
-
-  useEffect(() => {
-    // Checks for current Viewport's size
-    if(window.innerWidth > 767)
-      setIsMobile(false)
-    else if(window.innerWidth < 767)
-      setIsMobile(true)
-  }, [])
-  
   const buttonSize = useBreakpointValue(['sm', 'md', 'md']);
+  const namePerBreakpoint = useBreakpointValue(['Sean', 'Sean', 'Sean Christian Lozana'])
 
   return (
       <Stack spacing={[2 , 2, 3]} my="auto" overflowY="auto">
         <Heading 
           as="h3" 
           color={colorMode === 'light' ?  'gray.500' : 'white'}
-          fontSize={['2xl', '4xl', '4xl']}
+          fontSize={['xl', '3xl', '4xl']}
         >
-          Hello <span style={{fontWeight: "normal"}}>there</span><span style={{marginLeft: 3,color: "#F093AF", transform: "rotate(15deg)", position: "absolute"}}>!</span>
+          Hello <span style={{fontWeight: "normal"}}>there</span>
+          <span style={{marginLeft: 3,color: "#F093AF", transform: "rotate(15deg)", position: "absolute"}}>!</span>
         </Heading>
         <Heading 
-          as="h1" 
-          fontSize={['3xl', '4xl', '5xl', '6xl']}
+          as="h1"
+          fontSize={['3xl', '5xl', '5xl', '6xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
-          <span style={{fontWeight: 'normal'}}>I&apos;m</span> {`Sean${!isMobile ? ' Christian Lozana' : ''}`}<span style={{color: "#F093AF"}}>.</span>
-        </Heading> 
+          <span style={{fontWeight: 'normal'}}>I&apos;m</span> {namePerBreakpoint}<span style={{color: "#F093AF"}}>.</span>
+        </Heading>
+        <Divider
+          dropShadow={"md"}
+          borderColor={colorMode === 'light' ?  'gray.700' : 'white'}
+          width={['65%', '50%', '70%']}
+        /> 
         <Heading 
           as="h2" 
           fontSize={['xl', '3xl', '4xl']}
@@ -46,11 +41,6 @@ const Home = ({ colorMode }:HomeProps) => {
         >
           Software <span style={{color: "#F093AF", fontWeight: "normal"}}>Developer</span>
         </Heading>
-        <Divider
-          dropShadow={"md"}
-          borderColor={colorMode === 'light' ?  'gray.700' : 'white'}
-          width={['90%', '85%', '75%']}
-        />
         <Text 
           as="h4" 
           fontSize={['sm', 'xl', 'xl']} fontWeight="light"
@@ -67,7 +57,7 @@ const Home = ({ colorMode }:HomeProps) => {
           colorScheme={colorMode === 'light' ? 'gray.700' : 'base'} 
           maxW="fit-content"
           size={buttonSize}
-          my={[ 4,3,2 ]}
+          my={[4, 3, 2]}
           padding={[2, 3, 5]}
         >
           <Text

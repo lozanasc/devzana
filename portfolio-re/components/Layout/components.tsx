@@ -72,7 +72,7 @@ const LinkText = ({text, href, colorMode}:LinkTextProps) => {
       _hover={{fontWeight: 'bold'}}
       my="auto"
       color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
-      fontSize={['sm', 'sm', 'md', 'lg']}
+      fontSize={['sm', 'sm', 'md', 'md']}
       fontWeight={router.asPath === href ? 'black' : 'normal'}
     >
       <Link href={href}>
@@ -168,7 +168,7 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
       w="75%" 
       mx="auto"
       justify="space-between"
-      px={12} py={3}
+      px={12} py={2}
       rounded="lg"
       bgColor = {{ sm: colorMode === 'light' ? 'gray.200' : 'gray.700', md: colorMode === 'light' ? 'gray.500' : 'gray.200'}}
       display = {['none', 'none', 'flex']}
@@ -231,7 +231,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
       w="75%" 
       mx="auto"
       justify="space-between"
-      px={12} py={3}
+      px={12} py={2}
       bgColor = { colorMode === 'light' ? "gray.500" : "gray.200" }
       rounded="lg"
       display = {['none', 'none', 'flex']}
@@ -239,7 +239,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
     >
       <Stack>
         <Text
-          fontSize="lg"
+          fontSize="md"
           fontWeight="bold"
           color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
         >
