@@ -6,10 +6,9 @@ import { useHooks } from './hooks'
 
 type TechTypes = {
   colorMode: string,
-  data: any
 }
 
-const Tech = ({ colorMode, data }:TechTypes) => {
+const Tech = ({ colorMode }:TechTypes) => {
 
   const { TechList } = useHooks()
 
