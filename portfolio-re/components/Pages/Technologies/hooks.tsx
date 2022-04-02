@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react"
+import { useToast } from "@chakra-ui/react"
 
 export const useHooks = () => {
 
@@ -6,12 +7,25 @@ export const useHooks = () => {
     id: number,
     name: string,
   }
-  
+
+  const Toast = useToast()
+
   const [ techCollection, setTechCollection ] = useState<TechCollectionTypes[]>([])
 
-  // Pushes new tech to collection
   const addToCollection = (payload: TechCollectionTypes) => {
-    setTechCollection([...techCollection, payload])
+    // TODO: isDuplicate is expensive, find a better way to do this... if time permits
+    const isDuplicate = techCollection.find(item => item.id === payload.id)
+    if(isDuplicate)
+      Toast({
+        title: 'Oops!',
+        description: 'Tech already added...',
+        status: 'error',
+        position: 'top',
+        duration: 1500,
+        isClosable: true,
+      })
+    else
+      setTechCollection([...techCollection, payload])
   }
 
   // Removes tech from collection
@@ -19,7 +33,6 @@ export const useHooks = () => {
     setTechCollection(techCollection.filter(tech => tech.id !== id))
   }
 
-  // Just a list of technologies I've used throughout my entire career
   const TechList = useMemo(() => [
     {
       name: "Apache",

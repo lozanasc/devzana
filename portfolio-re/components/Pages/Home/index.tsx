@@ -10,40 +10,40 @@ const Home = ({ colorMode }:HomeProps) => {
   const router = useRouter()
 
   const buttonSize = useBreakpointValue(['sm', 'md', 'md']);
-  const namePerBreakpoint = useBreakpointValue(['Sean', 'Sean', 'Sean Christian Lozana'])
-
+  const name = useBreakpointValue({ base: 'Sean', md: 'Sean Christian Lozana' })
+  
   return (
-      <Stack spacing={[2 , 2, 3]} my="auto" overflowY="auto">
+      <Stack spacing={[2, 2, 3]} my="auto" overflowY="auto">
         <Heading 
           as="h3" 
           color={colorMode === 'light' ?  'gray.500' : 'white'}
-          fontSize={['xl', '3xl', '4xl']}
+          fontSize={['xl', '2xl', '3xl']}
         >
           Hello <span style={{fontWeight: "normal"}}>there</span>
           <span style={{marginLeft: 3,color: "#F093AF", transform: "rotate(15deg)", position: "absolute"}}>!</span>
         </Heading>
         <Heading 
           as="h1"
-          fontSize={['3xl', '5xl', '5xl', '6xl']}
+          fontSize={['3xl', '5xl', '5xl', '5xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
-          <span style={{fontWeight: 'normal'}}>I&apos;m</span> {namePerBreakpoint}<span style={{color: "#F093AF"}}>.</span>
+          <span style={{fontWeight: 'normal'}}>I&apos;m</span> {name}<span style={{ color: "#F093AF"}}>.</span>
         </Heading>
         <Divider
           dropShadow={"md"}
           borderColor={colorMode === 'light' ?  'gray.700' : 'white'}
-          width={['65%', '50%', '70%']}
+          width={['55%', '50%', '60%']}
         /> 
         <Heading 
           as="h2" 
-          fontSize={['xl', '3xl', '4xl']}
+          fontSize={['xl', '2xl', '3xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
         >
           Software <span style={{color: "#F093AF", fontWeight: "normal"}}>Developer</span>
         </Heading>
         <Text 
           as="h4" 
-          fontSize={['sm', 'xl', 'xl']} fontWeight="light"
+          fontSize={['sm', 'large', 'large']} fontWeight="light"
           w={['90%', '85%', '75%']}
           color={colorMode === 'light' ?  'gray.700' : 'white'}
         >
@@ -57,16 +57,10 @@ const Home = ({ colorMode }:HomeProps) => {
           colorScheme={colorMode === 'light' ? 'gray.700' : 'base'} 
           maxW="fit-content"
           size={buttonSize}
-          my={[4, 3, 2]}
-          padding={[2, 3, 5]}
+          padding={[2, 3, 4]}
+          onClick={() => router.push('/contact')}
         >
-          <Text
-            color={colorMode === 'light' ?  'gray.700' : 'white'}
-            onClick={() => {router.push('/contact')}}
-            fontSize={['xs', 'lg', 'xl']}
-          >
-            Say Hello 👋
-          </Text>
+          Say Hello! 👋
         </Button>
       </Stack>
   )
