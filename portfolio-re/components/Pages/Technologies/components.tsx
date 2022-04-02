@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { useBreakpointValue } from '@chakra-ui/react'
+import { useState, useEffect, MouseEventHandler, ReactChild } from 'react'
 import {
   Apache,
   Xampp,
@@ -31,30 +30,30 @@ import {
   Adobepremierepro,
   Notion
 } from '@icons-pack/react-simple-icons'
+import { Slide, Stack } from '@chakra-ui/react'
 
 
 type TechIconTypes = {
-  key: string | number,
   label: string,
   color: string,
   bgColor: string,
+  handlePress: MouseEventHandler<HTMLDivElement>,
 }
 
-export const TechIcon = ({ key, label, color, bgColor }: TechIconTypes) => {
+export const TechIcon = ({ label, color, bgColor, handlePress }: TechIconTypes) => {
   
   const [ hover, setHover] = useState(false)
-  // const margin = useBreakpointValue([6, 8, 12])
 
   const [ iconSize, setIconSize ] = useState(0)
   const [ margin, setMargin ] = useState(0)
-  
+
   useEffect(() => {
     if(window.innerWidth > 767){
       setIconSize(42)
       setMargin(12)
     }
     else if(window.innerWidth < 767) {
-      setIconSize(24)
+      setIconSize(22)
       setMargin(7)
     }
   }, [])
@@ -93,10 +92,9 @@ export const TechIcon = ({ key, label, color, bgColor }: TechIconTypes) => {
 
   return (
     <div 
-      key={key}
       onMouseEnter={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
-      onClick={() => alert(`Pressed: ${label}`)}
+      onClick={handlePress}
       style={{ 
           marginTop: margin, marginBottom: margin,
           marginRight: margin, marginLeft: margin, 
@@ -108,5 +106,22 @@ export const TechIcon = ({ key, label, color, bgColor }: TechIconTypes) => {
         }}>
       {Technologies[label]}
     </div>
+  )
+}
+
+type TechContainer = {
+  children: JSX.Element | JSX.Element[],
+  isOpen: boolean,
+}
+
+export const TechContainer = ({ children, isOpen }: TechContainer) => {
+  return (
+    <Slide
+      direction={'bottom'}
+      in={isOpen}
+      style={{ zIndex: 10 }}
+    >
+      { children }
+    </Slide>
   )
 }
