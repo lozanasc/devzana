@@ -6,7 +6,31 @@ import { useRouter } from 'next/router';
 import { Facebook, Github, Instagram, Linkedin } from '@icons-pack/react-simple-icons';
 
 
-// Routes for the Navigation
+
+
+type LogoProps = {
+  colorMode: string,
+}
+
+const Logo = ({colorMode}:LogoProps) => {
+  const router = useRouter();
+  const Dark = () => <Image 
+    src="/dark/logo/logo.svg" 
+    width={70} height={16}
+    alt="<devzana.>"
+    onClick={() => {router.push('/')}}
+  />
+  const Light = () => <Image 
+    src="/light/logo/logo.svg"
+    width={70} height={16}
+    alt="<devzana.>"
+    onClick={() => {router.push('/')}}
+  />
+  
+  return colorMode === 'light' ? <Light /> : <Dark />;
+}
+
+// Routes for the Navigation Links
 // ? cleaner code in the Nav component and I'll be able to implement activeStyle
 const Route: { name: string, href: string }[] =[
   {
@@ -31,28 +55,6 @@ const Route: { name: string, href: string }[] =[
   }
 ]
 
-type LogoProps = {
-  colorMode: string,
-}
-
-const Logo = ({colorMode}:LogoProps) => {
-  const router = useRouter();
-  const Dark = () => <Image 
-    src="/dark/logo/logo.svg" 
-    width={88} height={16}
-    alt="<devzana.>"
-    onClick={() => {router.push('/')}}
-  />
-  const Light = () => <Image 
-    src="/light/logo/logo.svg"
-    width={88} height={16}
-    alt="<devzana.>"
-    onClick={() => {router.push('/')}}
-  />
-  
-  return colorMode === 'light' ? <Light /> : <Dark />;
-}
-
 /**
  * * LinkText component
  * Component was made due to it being redundant
@@ -72,7 +74,7 @@ const LinkText = ({text, href, colorMode}:LinkTextProps) => {
       _hover={{fontWeight: 'bold'}}
       my="auto"
       color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
-      fontSize={['sm', 'sm', 'md', 'md']}
+      fontSize={['xs', 'xs', 'sm', 'sm']}
       fontWeight={router.asPath === href ? 'black' : 'normal'}
     >
       <Link href={href}>
@@ -168,7 +170,7 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
       w="75%" 
       mx="auto"
       justify="space-between"
-      px={12} py={2}
+      px={8} py={2}
       rounded="lg"
       bgColor = {{ sm: colorMode === 'light' ? 'gray.200' : 'gray.700', md: colorMode === 'light' ? 'gray.500' : 'gray.200'}}
       display = {['none', 'none', 'flex']}
@@ -195,7 +197,7 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
           icon={
               <Image 
                 src={ colorMode === 'light' ? '/light/icons/darkToggle.svg' : '/dark/icons/lightToggle.svg'} 
-                height={32} width={32} 
+                height={28} width={28} 
                 alt="clouds with the sun peaking"
               />
             }
@@ -231,7 +233,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
       w="75%" 
       mx="auto"
       justify="space-between"
-      px={12} py={2}
+      px={8} py={2}
       bgColor = { colorMode === 'light' ? "gray.500" : "gray.200" }
       rounded="lg"
       display = {['none', 'none', 'flex']}
@@ -239,7 +241,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
     >
       <Stack>
         <Text
-          fontSize="md"
+          fontSize="sm"
           fontWeight="bold"
           color={ colorMode === 'light' ? 'gray.200' : 'gray.700'}
         >
