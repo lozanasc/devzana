@@ -1,4 +1,4 @@
-import { useState, useEffect, MouseEventHandler, ReactChild } from 'react'
+import { useState, useEffect, MouseEventHandler } from 'react'
 import {
   Apache,
   Xampp,
@@ -30,17 +30,19 @@ import {
   Adobepremierepro,
   Notion
 } from '@icons-pack/react-simple-icons'
-import { Slide, Stack } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Slide } from '@chakra-ui/react'
 
 
 type TechIconTypes = {
   label: string,
+  colorMode?: string,
   color: string,
   bgColor: string,
   handlePress: MouseEventHandler<HTMLDivElement>,
 }
 
-export const TechIcon = ({ label, color, bgColor, handlePress }: TechIconTypes) => {
+export const TechIcon = ({ label, color, bgColor, colorMode, handlePress }: TechIconTypes) => {
   
   const [ hover, setHover] = useState(false)
 
@@ -87,7 +89,8 @@ export const TechIcon = ({ label, color, bgColor, handlePress }: TechIconTypes) 
     Visualstudiocode: <Visualstudiocode size={iconSize} color={color}/>,
     Netbeans: <Apachenetbeanside size={iconSize} color={color}/>,
     Adobepremierepro: <Adobepremierepro size={iconSize} color={color}/>,
-    Notion: <Notion size={iconSize} color={color}/>
+    Notion: <Notion size={iconSize} color={color}/>,
+    SeeProject: <Image src={colorMode === 'light' ? '/light/icons/seeProjects.svg' : '/dark/icons/seeProjects.svg'} height={iconSize} width={iconSize} alt="See related projects"/>,
   }
 
   return (
