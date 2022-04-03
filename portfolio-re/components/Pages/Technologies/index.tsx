@@ -1,4 +1,4 @@
-import { Stack, Heading, Divider, Text, ScaleFade, useToast } from '@chakra-ui/react'
+import { Stack, Heading, Divider, Text, ScaleFade } from '@chakra-ui/react'
 
 import { TechIcon, TechContainer } from './components'
 import { useHooks } from './hooks'
@@ -8,8 +8,6 @@ type TechTypes = {
 }
 
 const Tech = ({ colorMode }:TechTypes) => {
-
-  const Toast = useToast()
 
   const { TechList, addToCollection, removeFromCollection, techCollection } = useHooks()
 
@@ -21,15 +19,13 @@ const Tech = ({ colorMode }:TechTypes) => {
         <Stack
           p={2}
           color='white'
-          mx='10%' my={2}
+          mx='10%' my={0}
           bgColor="#718096"
           rounded="xl"
           direction="row"
+          justify="space-between"
         >
-          <Stack 
-            direction="row" 
-            overflowX="auto"
-          >
+          <Stack direction="row" overflowX="auto" maxWidth="80%">
             { 
               techCollection.map((tools, key) => 
               <ScaleFade 
@@ -44,15 +40,22 @@ const Tech = ({ colorMode }:TechTypes) => {
                   bgColor={colorMode === 'light' ? '#2D3748' : '#E2E8F0'}
                   handlePress={() => removeFromCollection(tools.id)}
                 />
-              </ScaleFade>
-                )
+              </ScaleFade>)
             }
           </Stack>
+          <TechIcon
+            label="SeeProject"
+            colorMode={colorMode}
+            color={colorMode === 'light' ? '#E2E8F0' : '#2D3748'} 
+            bgColor={colorMode === 'light' ? '#2D3748' : '#E2E8F0'}
+            // TODO: Route to projects page with technology inside the collection as slugs
+            handlePress={() => alert('Routing to Projects page...')}
+          />
         </Stack>
       </TechContainer>
-      <Heading
+        <Heading
           as="h2" 
-          fontSize={['md', 'xl', '4xl']}
+          fontSize={['md', 'xl', '2xl']}
           color={colorMode === 'light' ?  'gray.500' : 'white'}
           fontWeight="bold" 
           textAlign="center"
@@ -61,7 +64,7 @@ const Tech = ({ colorMode }:TechTypes) => {
         </Heading>
         <Text 
           as="h4" 
-          fontSize={['xs', 'small', 'md', 'lg']}
+          fontSize={['xs', 'smaller', 'sm', 'md']}
           fontWeight="light"
           color={colorMode === 'light' ?  'gray.700' : 'white'}
           alignSelf="center" textAlign="center"
@@ -71,7 +74,7 @@ const Tech = ({ colorMode }:TechTypes) => {
         <Divider
           dropShadow={"md"}
           borderColor={colorMode === 'light' ?  'gray.700' : 'white'}
-          width="90%" py={1} 
+          width={['full', 'full', '90%']} py={1} 
           alignSelf="center"
         />
         <Stack direction="row" wrap="wrap" justify="center">
@@ -86,15 +89,19 @@ const Tech = ({ colorMode }:TechTypes) => {
               />)
           }
         </Stack>
-        <Text 
-          as="h4" 
-          fontSize={['xx-small', 'xs', 'sm', 'md']}
-          fontWeight="light"
-          color={colorMode === 'light' ?  'gray.700' : 'white'}
-          alignSelf="center" textAlign="center"
-        >
-          (Click or Tap a Tech to add to a Collection and press Proceed Button to find Projects related to chosen Technologies)
-        </Text>
+        {
+          techCollection.length <= 0 && (
+          <Text 
+            as="h4" 
+            fontSize={['xx-small', 'xs', 'sm', 'md']}
+            fontStyle="italic" fontWeight="regular"
+            color={colorMode === 'light' ?  'gray.700' : 'white'}
+            alignSelf="center" textAlign="center"
+          >
+            Click or Tap on a Technology and see projects with it! 😉
+          </Text>
+          )
+        }
     </Stack>
   )
 }

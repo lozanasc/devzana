@@ -24,6 +24,15 @@ export const useHooks = () => {
         duration: 1500,
         isClosable: true,
       })
+    else if(techCollection.length > 3 )
+      Toast({
+        title: 'Wait...',
+        description: 'Limited to 4 technologies at once',
+        status: 'info',
+        position: 'top',
+        duration: 1500,
+        isClosable: true,
+      })
     else
       setTechCollection([...techCollection, payload])
   }
