@@ -9,6 +9,7 @@ export const ProfileDesktop = () => {
     <Stack
       m="auto"
       display={['none', 'none', 'inline-block']}
+      sx={{ filter: 'drop-shadow(2px 2px 0.10rem gray)' }}
     >
       <Image 
         src="/profile/desktop.png" 
@@ -25,6 +26,7 @@ export const ProfileMobile = () => {
     <Stack
       m="auto"
       display={['inline-block', 'inline-block', 'none']}
+      sx={{ filter: 'drop-shadow(2px 2px 0.10rem gray)' }}
     >
       <Image
         src="/profile/mobile.png" 
