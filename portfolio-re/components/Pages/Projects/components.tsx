@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stack, Image, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
+import { motion } from 'framer-motion';
 
 type ProjectCardTypes = {
   title?: string,
@@ -14,16 +15,21 @@ export const ProjectCard = ({ title, description, thumbnail, colorMode }: Projec
   const [hover, setHover] = useState(false)
 
   return (
-    <div
+    <motion.div
       onClick={() => alert('Trigger modal')}
       onMouseEnter={() => setHover(!hover)}
       onMouseLeave={() => setHover(!hover)}
       style={{
         backgroundColor: (colorMode === 'light' ? '#2D3748' : '#718096'),
         display: 'flex', flexDirection: 'row',
+        marginTop: 4, marginBottom: 4,
         borderRadius: 4,
-        filter: (hover ? 'drop-shadow(0 0 0.15rem black)' : 'none'),
+        filter: (hover ? 'drop-shadow(0 0 0.10rem gray)' : 'none'),
         cursor: 'pointer'
+      }}
+      whileHover={{
+        scale: 0.95,
+        transition: { duration: 0.3 },
       }}
     >
       <Image
@@ -54,6 +60,6 @@ export const ProjectCard = ({ title, description, thumbnail, colorMode }: Projec
           {description}
         </Text>
       </Stack>
-    </div>
+    </motion.div>
   )
 }
