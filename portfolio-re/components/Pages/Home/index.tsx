@@ -44,7 +44,7 @@ const Home = ({ colorMode }:HomeProps) => {
         <Text 
           as="h4" 
           fontSize={['sm', 'large', 'large']} fontWeight="light"
-          w={['90%', '85%', '75%']}
+          w={['90%', '85%', '60%']}
           color={colorMode === 'light' ?  'gray.700' : 'white'}
         >
           I&apos;m a senior <span style={{color: "#F093AF", fontWeight: "bold"}}>Computer Science</span> student,

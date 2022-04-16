@@ -50,14 +50,21 @@ export const TechIcon = ({ label, color, bgColor, colorMode, handlePress }: Tech
   const [ margin, setMargin ] = useState(0)
 
   useEffect(() => {
-    if(window.innerWidth > 767){
-      setIconSize(42)
-      setMargin(12)
+
+    function handleResize(): void {
+      if(window.innerWidth > 767){
+        setIconSize(32)
+        setMargin(12)
+      }
+      else if(window.innerWidth < 767) {
+        setIconSize(22)
+        setMargin(7)
+      }
     }
-    else if(window.innerWidth < 767) {
-      setIconSize(22)
-      setMargin(7)
-    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize);
+    return (): void => window.removeEventListener('resize', handleResize);
   }, [])
 
   const Technologies: any = {
@@ -122,7 +129,8 @@ export const TechContainer = ({ children, isOpen }: TechContainer) => {
     <Slide
       direction={'bottom'}
       in={isOpen}
-      style={{ zIndex: 10 }}
+      style={{ zIndex: 10, marginBottom: 12 }}
+      unmountOnExit
     >
       { children }
     </Slide>
