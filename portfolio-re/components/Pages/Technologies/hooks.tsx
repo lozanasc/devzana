@@ -45,90 +45,119 @@ export const useHooks = () => {
   const TechList = useMemo(() => [
     {
       name: "Apache",
+      type: "tool"
     },
     {
-      name: "Xampp"
+      name: "Xampp",
+      type: "tool"
     },
     {
-      name: "Linux"
+      name: "Linux",
+      type: "tool"
     },
     {
-      name: "Mysql"
+      name: "Mysql",
+      type: "fundamental"
     },
     {
-      name: "Postgresql"
+      name: "Postgresql",
+      type: "fundamental"
     },
     {
-      name: "Typescript"
+      name: "Typescript",
+      type: "fundamental"
     },
     {
-      name: "Javascript"
+      name: "Javascript",
+      type: "fundamental"
     },
     {
-      name: "Nodejs"
+      name: "Nodejs",
+      type: "framework"
     },
     {
-      name: "Express"
+      name: "Express",
+      type: "framework"
     },
     {
-      name: "Nextjs"
+      name: "Nextjs",
+      type: "framework"
     },
     {
-      name: "React"
+      name: "React",
+      type: "framework"
     },
     {
-      name: "Sass"
+      name: "Sass",
+      type: "framework"
     },
     {
-      name: "Chakraui"
+      name: "Chakraui",
+      type: "framework"
     },
     {
-      name: "Tailwindcss"
+      name: "Tailwindcss",
+      type: "framework"
     },
     {
-      name: "Styledcomponents"
+      name: "Styledcomponents",
+      type: "framework"
     },
     {
-      name: "Laravel"
+      name: "Laravel",
+      type: "framework"
     },
     {
-      name: "Androidstudio"
+      name: "Androidstudio",
+      type: "tool"
     },
     {
-      name: "Java"
+      name: "Java",
+      type: "fundmental"
     },
     {
-      name: "Expo"
+      name: "Expo",
+      type: "framework"
     },
     {
-      name: "Github"
+      name: "Github",
+      type: "tool"
     },
     {
-      name: "Gitlab"
+      name: "Gitlab",
+      type: "tool"
     },
     {
-      name: "Bitbucket"
+      name: "Bitbucket",
+      type: "tool"
     },
     {
-      name: "Postman"
+      name: "Postman",
+      type: "tool"
     },
     {
-      name: "Figma"
+      name: "Figma",
+      type: "tool"
     },
     {
-      name: "Adobexd"
+      name: "Adobexd",
+      type: "tool"
     },
     {
-      name: "Visualstudiocode"
+      name: "Visualstudiocode",
+      type: "tool"
     },
     {
-      name: "Netbeans"
+      name: "Netbeans",
+      type: "tool"
     },
     {
-      name: "Adobepremierepro"
+      name: "Adobepremierepro",
+      type: "tool"
     },
     {
-      name: "Notion"
+      name: "Notion",
+      type: "tool"
     }
 ], [])
 

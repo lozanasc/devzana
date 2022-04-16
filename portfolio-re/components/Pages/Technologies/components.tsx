@@ -113,6 +113,8 @@ export const TechIcon = ({ label, color, bgColor, colorMode, handlePress }: Tech
           borderRadius: 8,
           cursor: 'pointer',
           filter: (hover ? 'drop-shadow(1px 2px 0.15rem rgba(0, 0, 0, 0.28))' : ''),
+          display: "flex",
+          justifyContent: "center"
         }}>
       {Technologies[label]}
     </div>
