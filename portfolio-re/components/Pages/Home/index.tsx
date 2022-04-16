@@ -74,7 +74,7 @@ const Home = ({ colorMode }:HomeProps) => {
           display = {['none', 'none', 'flex']}
         >
           <Image 
-            src="/illustrations/illustration.svg" 
+            src="/illustrations/Illustration.svg" 
             height={367}
             width={600} 
             alt="Photo of me Sean! 👋🙂"
