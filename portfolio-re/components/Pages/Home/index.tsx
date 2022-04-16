@@ -78,7 +78,6 @@ const Home = ({ colorMode }:HomeProps) => {
             height={367}
             width={600} 
             alt="Photo of me Sean! 👋🙂"
-            loading="lazy"
           />
         </Container>
       </Stack>
