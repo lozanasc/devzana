@@ -1,5 +1,4 @@
-import { Key, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { Key } from 'react'
 import useSWR from 'swr'
 import { Stack, Heading, Divider, Spinner } from '@chakra-ui/react'
 
@@ -11,8 +10,6 @@ type ProjectPageType = {
 }
 
 const Project = ({ colorMode }: ProjectPageType) => {
-
-  const router = useRouter()
 
   const { fetcher } = useFetch()
 
@@ -48,8 +45,9 @@ const Project = ({ colorMode }: ProjectPageType) => {
               as="h2" 
               fontSize={['md', 'xl', '2xl']}
               color={colorMode === 'light' ?  'gray.500' : 'white'}
+              m="auto"
               fontWeight="bold" 
-              textAlign="left"
+              textAlign="center"
             >
               <span style={{color: "#F093AF"}}>Oops!</span> Something went wrong!
             </Heading>
