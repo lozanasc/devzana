@@ -23,7 +23,10 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
       >
         <Head>
           <title>{`devzana | ${title}`}</title>
+          <meta httpEquiv="Content-Type" content="text/html; charset=ISO-8859-1" />
           <meta name="description" content="Made by Sean Christian Lozana with (NextJS + Chakra UI) 💖" />
+          <meta name="robots" content="noindex" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href={ colorMode === 'light' ? '/light/logo/Light-Page.ico' : '/dark/logo/Dark-Page.ico'} />
         </Head>
         <TopBar 
