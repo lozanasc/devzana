@@ -5,26 +5,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Facebook, Github, Instagram, Linkedin } from '@icons-pack/react-simple-icons';
 
-
-
-
 type LogoProps = {
   colorMode: string,
 }
 
 const Logo = ({colorMode}:LogoProps) => {
-  const router = useRouter();
   const Dark = () => <Image 
     src="/dark/logo/logo.svg" 
     width={70} height={16}
     alt="<devzana.>"
-    onClick={() => {router.push('/')}}
   />
   const Light = () => <Image 
     src="/light/logo/logo.svg"
     width={70} height={16}
     alt="<devzana.>"
-    onClick={() => {router.push('/')}}
   />
   
   return colorMode === 'light' ? <Light /> : <Dark />;
@@ -97,6 +91,7 @@ type TopBarProps = {
 }
 
 export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
+  const router = useRouter();
   const altColorMode = (colorMode: string) => colorMode !== 'light' ? 'light' : 'dark';
   return (
     <HStack 
@@ -111,6 +106,7 @@ export const TopBar = ({ colorMode, toggleColorMode }: TopBarProps) => {
         aria-label="devzana Logo"
         icon = {<Logo colorMode={altColorMode(colorMode)}/>}
         colorScheme="gray.200"
+        onClick={() => {router.push('/')}}
       />
       <IconButton
           aria-label="Toggle Light mode"
@@ -165,6 +161,7 @@ export const MobileNavigation = ({ colorMode }: NavigationProps) => {
 }
 
 export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
+  const router = useRouter();
   return (
     <HStack 
       w="75%" 
@@ -180,6 +177,7 @@ export const Navigation = ({ colorMode, toggleColorMode }: NavigationProps) => {
         aria-label="devzana Logo"
         icon = {<Logo colorMode={colorMode}/>}
         colorScheme="gray.200"
+        onClick={() => {router.push('/')}}
       /> 
       <HStack spacing={6}>
       {
@@ -255,7 +253,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
         aria-label="Facebook"
         icon={
           <Facebook 
-            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+            color={colorMode === 'light' ? '#E2E8F0' : '#2D3748'}
           />
         }
         colorScheme="gray.200"
@@ -266,7 +264,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
         aria-label="Instagram"
         icon={
           <Instagram 
-            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+            color={colorMode === 'light' ? '#E2E8F0' : '#2D3748'}
           />
         }
         colorScheme="gray.200"
@@ -277,7 +275,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
         aria-label="GitHub"
         icon={
           <Github 
-            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+            color={colorMode === 'light' ? '#E2E8F0' : '#2D3748'}
           />
         }
         colorScheme="gray.200"
@@ -288,7 +286,7 @@ export const Footer = ({ colorMode }:FooterProps) => {
         aria-label="Linkedin"
         icon={
           <Linkedin 
-            color={colorMode === 'light' ? '#E2E8F0' : '#718096'}
+            color={colorMode === 'light' ? '#E2E8F0' : '#2D3748'}
           />
         }
         colorScheme="gray.200"
