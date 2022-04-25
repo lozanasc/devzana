@@ -12,7 +12,6 @@ type Props = {
 }
 
 const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
-
   return (
       <VStack 
         w="100vw" h="100vh" 
@@ -39,8 +38,8 @@ const Layout = ({ children, title, colorMode, toggleColorMode }:Props) => {
         />
         <motion.div
             // ? Transition animation each page
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
+            initial={{opacity: 0, y: -50 }}
+            animate={{opacity: 1, y: 0}}
             transition = {{duration: 1}}
             style={{
               minHeight: "75%", maxHeight: "75%",
